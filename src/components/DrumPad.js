@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 
 const activeStyle = {
-  backgroundColor: 'orange',
-  boxShadow: '0 3px orange',
-  height: 77,
-  marginTop: 13
+  backgroundColor: '#666',
+  borderRadius: 10,
+  padding: 20,
+  textAlign: 'center',
+  boxShadow: 'inset 5px 5px 10px #1b1b1b, inset - 5px -5px 10px #3d3d3d'
 };
 
 const inactiveStyle = {
-  backgroundColor: 'grey',
-  marginTop: 10,
-  boxShadow: '3px 3px 5px black'
+  backgroundColor: '#444',
+  borderRadius: 10,
+  padding: 20,
+  fontSize: 30,
+  textAlign: 'center',
+  cursor: 'pointer',
+  transition: 'all 0.3s ease',
+  boxShadow: '5px 5px 10px #1b1b1b, -5px - 5px 10px #3d3d3d'
 };
 
 class DrumPad extends Component {
@@ -40,17 +46,15 @@ class DrumPad extends Component {
 
   activatePad() {
     this.props.power
-      ? this.state.padStyle.backgroundColor === 'orange'
+      ? this.state.padStyle.backgroundColor === '#666'
         ? this.setState({ padStyle: inactiveStyle })
         : this.setState({ padStyle: activeStyle })
-      : this.state.padStyle.marginTop === 13
+      : this.state.padStyle.backgroundColor === '#444'
         ? this.setState({ padStyle: inactiveStyle })
         : this.setState({
           padStyle: {
-            height: 77,
-            marginTop: 13,
-            backgroundColor: 'grey',
-            boxShadow: '0 3px grey'
+            backgroundColor: '#444',
+            boxShadow: '5px 5px 10px #1b1b1b, -5px - 5px 10px #3d3d3d'
           }
         });
   }
